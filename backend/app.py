@@ -1,49 +1,59 @@
 
-from flask import Flask, jsonify,request
+from flask import Flask, jsonify
 from flask_cors import CORS
 
+from routes.reports import reports_bp
+from routes.questions import questions_bp
+from routes.issues import issues_bp
+
+
 app = Flask(__name__)
+
+# Enable frontend communication
 CORS(app)
 
+# Register API routes
+app.register_blueprint(
+    reports_bp,
+    url_prefix="/api"
+)
+
+app.register_blueprint(
+    questions_bp,
+    url_prefix="/api"
+)
+
+app.register_blueprint(
+    issues_bp,
+    url_prefix="/api"
+)
+
+
+# Home route
 @app.route("/")
 def home():
+
     return jsonify({
-        "message": "Welcome to OpsRelay Backend",
+        "project": "OpsRelay",
+        "message": "Business Memory System Backend",
         "status": "Running"
     })
 
+
+# Health check
 @app.route("/api/health")
 def health():
+
     return jsonify({
         "status": "success",
-        "message": "Backend is working!"
+        "message": "OpsRelay Backend is working"
     })
 
 
-@app.route("/api/reports", methods=["POST"])
-def submit_report():
-
-    data = request.get_json()
-
-    if not data:
-        return jsonify({
-            "error": "No report data provided"
-        }), 400
-
-    report = {
-        "employee": data.get("employee"),
-        "shift": data.get("shift"),
-        "machine": data.get("machine"),
-        "issue": data.get("issue"),
-        "action_taken": data.get("action_taken"),
-        "status": data.get("status", "Unresolved")
-    }
-
-    return jsonify({
-        "message": "Shift report received successfully!",
-        "report": report
-    }), 201
-
-
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+
+    app.run(
+        host="127.0.0.1",
+        port=5000,
+        debug=True
+    )
