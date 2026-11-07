@@ -1,0 +1,136 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | OpsRelay{% endblock %}
+
+{% block content %}
+
+<!-- Welcome Section -->
+<div class="page-heading">
+    <h1>Welcome to OpsRelay 👋</h1>
+    <p>Your team's operational knowledge, connected in one place.</p>
+</div>
+
+<!-- Quick Statistics -->
+<div class="stats-grid">
+
+    <div class="card">
+        <p class="stat-label">Total Machines</p>
+        <div class="stat-number">12</div>
+        <p>Registered machines</p>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Active Issues</p>
+        <div class="stat-number">03</div>
+        <span class="status status-critical">Needs attention</span>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Pending Tasks</p>
+        <div class="stat-number">05</div>
+        <span class="status status-pending">In progress</span>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Shift Reports</p>
+        <div class="stat-number">28</div>
+        <p>Reports recorded</p>
+    </div>
+
+</div>
+
+<!-- Quick Actions -->
+<div class="page-heading">
+    <h2>Quick Actions</h2>
+    <p>Access important workspace activities.</p>
+</div>
+
+<div class="stats-grid">
+
+    <div class="card">
+        <h3>＋ Submit Shift Report</h3>
+        <p>Record machine conditions, actions taken and unresolved problems.</p>
+        <br>
+        <a href="/report" class="btn">Create Report</a>
+    </div>
+
+    <div class="card">
+        <h3>✧ Memory Assistant</h3>
+        <p>Ask questions about previous shifts, machine issues and solutions.</p>
+        <br>
+        <a href="/assistant" class="btn">Ask Assistant</a>
+    </div>
+
+    <div class="card">
+        <h3>◷ Machine History</h3>
+        <p>Explore previous machine reports and maintenance activities.</p>
+        <br>
+        <a href="/history" class="btn btn-secondary">View History</a>
+    </div>
+
+    <div class="card">
+        <h3>↻ Recurring Issues</h3>
+        <p>Identify problems that have appeared repeatedly across shifts.</p>
+        <br>
+        <a href="/recurring" class="btn btn-secondary">View Issues</a>
+    </div>
+
+</div>
+
+<!-- Recent Activity -->
+<div class="page-heading">
+    <h2>Recent Shift Activity</h2>
+    <p>A preview of recent operational updates.</p>
+</div>
+
+<div class="card table-container">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Machine</th>
+                <th>Issue</th>
+                <th>Reported By</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Machine A</td>
+                <td>Overheating</td>
+                <td>Morning Shift</td>
+                <td><span class="status status-pending">Unresolved</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine B</td>
+                <td>Low pressure</td>
+                <td>Evening Shift</td>
+                <td><span class="status status-completed">Resolved</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine C</td>
+                <td>Sensor warning</td>
+                <td>Morning Shift</td>
+                <td><span class="status status-pending">Monitoring</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Memory Highlight -->
+<div class="card" style="margin-top: 25px; background: #edf4ff;">
+    <h3>✧ OpsRelay Memory</h3>
+    <p>
+        Every shift report can become useful knowledge for the next employee.
+        Ask the Memory Assistant to retrieve previous updates and solutions.
+    </p>
+    <br>
+    <a href="/assistant" class="btn">Explore Team Memory</a>
+</div>
+
+{% endblock %}

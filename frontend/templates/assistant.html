@@ -1,0 +1,120 @@
+
+{% extends "base.html" %}
+
+{% block title %}Memory Assistant | OpsRelay{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <h1>✧ Memory Assistant</h1>
+    <p>Ask questions and retrieve useful information from previous shifts.</p>
+</div>
+
+<div class="assistant-layout">
+
+    <!-- Chat Area -->
+    <div class="card chat-card">
+
+        <div class="chat-header">
+            <div>
+                <h3>OpsRelay AI Assistant</h3>
+                <p>Team operational memory</p>
+            </div>
+            <span class="status status-completed">Ready</span>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+
+            <div class="message assistant-message">
+                <div class="message-avatar">O</div>
+                <div class="message-content">
+                    <p>Hello! I'm your OpsRelay Memory Assistant.</p>
+                    <p>You can ask me about previous shifts, machine problems, actions taken and pending tasks.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Suggested Questions -->
+        <div class="suggestions">
+            <p>Try asking:</p>
+
+            <button type="button" class="suggestion-btn"
+                onclick="useSuggestion(this)">
+                What happened to Machine A?
+            </button>
+
+            <button type="button" class="suggestion-btn"
+                onclick="useSuggestion(this)">
+                Which tasks are pending?
+            </button>
+
+            <button type="button" class="suggestion-btn"
+                onclick="useSuggestion(this)">
+                What problems are recurring?
+            </button>
+        </div>
+
+        <!-- Message Input -->
+        <form class="chat-input-area" id="chatForm">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask about previous shift reports..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" class="btn">
+                Send
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Information Panel -->
+    <div class="card memory-info">
+
+        <h3>About Team Memory</h3>
+
+        <p>
+            OpsRelay keeps important operational knowledge available
+            across employee shifts.
+        </p>
+
+        <div class="memory-feature">
+            <span>◷</span>
+            <div>
+                <h4>Previous Reports</h4>
+                <p>Retrieve information recorded by earlier employees.</p>
+            </div>
+        </div>
+
+        <div class="memory-feature">
+            <span>↻</span>
+            <div>
+                <h4>Recurring Problems</h4>
+                <p>Identify repeated machine issues across shifts.</p>
+            </div>
+        </div>
+
+        <div class="memory-feature">
+            <span>✓</span>
+            <div>
+                <h4>Past Solutions</h4>
+                <p>Find out which actions were previously recorded.</p>
+            </div>
+        </div>
+
+        <div class="memory-note">
+            <strong>Memory Status</strong>
+            <p>Backend integration pending.</p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

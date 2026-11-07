@@ -1,6 +1,6 @@
 
 from flask import Blueprint, request, jsonify
-from hindsight_service import hindsight
+from .hindsight_service import hindsight
 from datetime import datetime, timezone
 import uuid
 
@@ -8,7 +8,7 @@ reports_bp = Blueprint("reports", __name__)
 
 # Submit a shift report
 @reports_bp.route("/reports", methods=["POST"])
-def submit_report():
+async def submit_report():
 
     data = request.get_json(silent=True)
 
@@ -43,7 +43,7 @@ def submit_report():
     }
 
     try:
-        hindsight.retain_report(report)
+        await hindsight.retain_report(report)
 
         return jsonify({
             "message": "Report received and sent to memory",

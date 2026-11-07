@@ -8,9 +8,9 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "opsrelay-dev-key")
 
     HINDSIGHT_BASE_URL = os.getenv(
-        "HINDSIGHT_BASE_URL",
-        "http://localhost:8888"
-    )
+    "HINDSIGHT_BASE_URL",
+    "https://api.hindsight.vectorize.io"
+)
 
     HINDSIGHT_API_KEY = os.getenv("HINDSIGHT_API_KEY")
 

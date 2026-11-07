@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}OpsRelay{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">O</span>
+                <h2>OpsRelay</h2>
+            </div>
+
+            <p class="menu-heading">WORKSPACE</p>
+
+            <nav class="navigation">
+                <a href="/dashboard" class="nav-link">▦ Dashboard</a>
+                <a href="/report" class="nav-link">＋ Shift Report</a>
+                <a href="/assistant" class="nav-link">✧ Memory Assistant</a>
+                <a href="/history" class="nav-link">◷ Machine History</a>
+                <a href="/recurring" class="nav-link">↻ Recurring Issues</a>
+                <a href="/tasks" class="nav-link">☑ Pending Tasks</a>
+                <a href="/timeline" class="nav-link">◉ Memory Timeline</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Business Memory System</p>
+                <small>Team OpsRelay</small>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h3>Operations Workspace</h3>
+                    <p>Keep your team's knowledge connected.</p>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-avatar">T</div>
+                    <span>Team Member</span>
+                </div>
+            </header>
+
+            <section class="page-content">
+                {% block content %}
+                {% endblock %}
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

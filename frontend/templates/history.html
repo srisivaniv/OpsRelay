@@ -1,0 +1,140 @@
+
+{% extends "base.html" %}
+
+{% block title %}Machine History | OpsRelay{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <h1>Machine History</h1>
+    <p>View previous machine reports, maintenance activities and recorded solutions.</p>
+</div>
+
+<!-- Search Section -->
+<div class="card history-search">
+    <h3>Find Machine Records</h3>
+
+    <div class="search-row">
+        <input
+            type="text"
+            id="machineSearch"
+            placeholder="Search by machine name or ID..."
+        >
+
+        <button class="btn" type="button" onclick="searchMachines()">
+            Search
+        </button>
+    </div>
+</div>
+
+<!-- Machine Summary -->
+<div class="page-heading" style="margin-top: 28px;">
+    <h2>Machine Overview</h2>
+    <p>Sample machine records for the dashboard demonstration.</p>
+</div>
+
+<div class="stats-grid">
+
+    <div class="card">
+        <p class="stat-label">Machine A</p>
+        <div class="stat-number">04</div>
+        <p>Recorded reports</p>
+        <span class="status status-critical">Overheating</span>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Machine B</p>
+        <div class="stat-number">06</div>
+        <p>Recorded reports</p>
+        <span class="status status-completed">Operational</span>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Machine C</p>
+        <div class="stat-number">03</div>
+        <p>Recorded reports</p>
+        <span class="status status-pending">Monitoring</span>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Machine D</p>
+        <div class="stat-number">02</div>
+        <p>Recorded reports</p>
+        <span class="status status-completed">Operational</span>
+    </div>
+
+</div>
+
+<!-- History Table -->
+<div class="page-heading">
+    <h2>Previous Shift Reports</h2>
+    <p>Explore the recorded machine activities.</p>
+</div>
+
+<div class="card table-container">
+
+    <table id="historyTable">
+
+        <thead>
+            <tr>
+                <th>Machine</th>
+                <th>Shift</th>
+                <th>Problem</th>
+                <th>Action Taken</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Machine A</td>
+                <td>Morning</td>
+                <td>Overheating</td>
+                <td>Cooling system checked</td>
+                <td><span class="status status-pending">Pending</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine A</td>
+                <td>Evening</td>
+                <td>Temperature increased</td>
+                <td>Cooling fan inspected</td>
+                <td><span class="status status-pending">Monitoring</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine B</td>
+                <td>Morning</td>
+                <td>Low pressure</td>
+                <td>Pressure valve checked</td>
+                <td><span class="status status-completed">Resolved</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine C</td>
+                <td>Night</td>
+                <td>Sensor warning</td>
+                <td>Sensor connection checked</td>
+                <td><span class="status status-pending">Monitoring</span></td>
+            </tr>
+
+            <tr>
+                <td>Machine D</td>
+                <td>Evening</td>
+                <td>Routine maintenance</td>
+                <td>Inspection completed</td>
+                <td><span class="status status-completed">Completed</span></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p id="noHistoryResults" style="display:none; padding:15px;">
+        No matching machine records found.
+    </p>
+
+</div>
+
+{% endblock %}

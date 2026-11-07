@@ -1,6 +1,6 @@
 
 from flask import Blueprint, request, jsonify
-from hindsight_service import hindsight
+from .hindsight_service import hindsight
 
 issues_bp = Blueprint("issues", __name__)
 

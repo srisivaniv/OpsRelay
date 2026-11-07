@@ -1,67 +1,75 @@
 
 from hindsight_client import Hindsight
-from config import Config
+from .config import Config
 
 
 class HindsightService:
 
     def __init__(self):
+        self.bank_id = Config.HINDSIGHT_BANK_ID
 
-        self.client = Hindsight(
+    def create_client(self):
+        return Hindsight(
             base_url=Config.HINDSIGHT_BASE_URL,
             api_key=Config.HINDSIGHT_API_KEY or None
         )
 
-        self.bank_id = Config.HINDSIGHT_BANK_ID
-
-    # RETAIN: Store shift reports
-    def retain_report(self, report):
+    async def retain_report(self, report):
 
         content = f"""
-        Employee: {report['employee']}
-        Shift: {report['shift']}
-        Machine: {report['machine']}
-        Issue: {report['issue']}
-        Action Taken: {report['action_taken']}
-        Status: {report['status']}
-        Report ID: {report['report_id']}
-        """
+Employee: {report['employee']}
+Shift: {report['shift']}
+Machine: {report['machine']}
+Issue: {report['issue']}
+Action Taken: {report['action_taken']}
+Status: {report['status']}
+Report ID: {report['report_id']}
+"""
 
-        return self.client.retain(
-            bank_id=self.bank_id,
-            content=content,
-            metadata={
-                "report_id": report["report_id"],
-                "machine": report["machine"],
-                "shift": report["shift"]
-            }
-        )
+        client = self.create_client()
 
-    # RECALL: Search previous memories
-    def recall_memory(self, question):
+        try:
+            return await client.aretain(
+                bank_id=self.bank_id,
+                content=content,
+                metadata={
+                    "report_id": report["report_id"],
+                    "machine": report["machine"],
+                    "shift": report["shift"]
+                }
+            )
+        finally:
+            await client.aclose()
 
-        result = self.client.recall(
-            bank_id=self.bank_id,
-            query=question
-        )
+    async def recall_memory(self, question):
 
-        return [
-            memory.text
-            for memory in result.results
-        ]
+        client = self.create_client()
 
-    # REFLECT: Generate contextual answers
-    def reflect_memory(self, question):
+        try:
+            result = await client.arecall(
+                bank_id=self.bank_id,
+                query=question
+            )
 
-        result = self.client.reflect(
-            bank_id=self.bank_id,
-            query=question
-        )
+            return [memory.text for memory in result.results]
+        finally:
+            await client.aclose()
 
-        return result.text
+    async def reflect_memory(self, question):
 
-    # Identify recurring issues
-    def identify_patterns(self, machine=None):
+        client = self.create_client()
+
+        try:
+            result = await client.areflect(
+                bank_id=self.bank_id,
+                query=question
+            )
+
+            return result.text
+        finally:
+            await client.aclose()
+
+    async def identify_patterns(self, machine=None):
 
         question = (
             f"Identify recurring problems, their frequency "
@@ -71,7 +79,7 @@ class HindsightService:
             "shift reports and explain which solutions worked."
         )
 
-        return self.reflect_memory(question)
+        return await self.reflect_memory(question)
 
 
 hindsight = HindsightService()

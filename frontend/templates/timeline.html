@@ -1,0 +1,177 @@
+
+{% extends "base.html" %}
+
+{% block title %}Memory Timeline | OpsRelay{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <h1>Memory Timeline</h1>
+        <p>Explore how operational knowledge develops across shifts.</p>
+    </div>
+    <span class="status status-progress">Memory Overview</span>
+</div>
+
+<!-- Timeline summary -->
+<div class="stats-grid timeline-stats">
+
+    <div class="card">
+        <p class="stat-label">Recorded Events</p>
+        <h2 class="stat-number">08</h2>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Machines Mentioned</p>
+        <h2 class="stat-number">04</h2>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Follow-up Events</p>
+        <h2 class="stat-number">03</h2>
+    </div>
+
+    <div class="card">
+        <p class="stat-label">Memory Status</p>
+        <h2 class="timeline-status-text">Demo</h2>
+    </div>
+
+</div>
+
+<!-- Timeline -->
+<div class="card timeline-card">
+
+    <div class="timeline-heading">
+        <div>
+            <h2>Operational Memory</h2>
+            <p>Example events showing a machine issue across multiple shifts.</p>
+        </div>
+    </div>
+
+    <div class="timeline">
+
+        <!-- Event 1 -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+
+            <div class="timeline-event">
+                <div class="timeline-event-top">
+                    <span class="timeline-date">November 4 · Morning Shift</span>
+                    <span class="status status-pending">Issue Reported</span>
+                </div>
+
+                <h3>Machine A overheating observed</h3>
+
+                <p>
+                    The morning team recorded an overheating warning
+                    while monitoring Machine A.
+                </p>
+
+                <div class="timeline-details">
+                    <span>Machine A</span>
+                    <span>Reported by: Technician 01</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+
+            <div class="timeline-event">
+                <div class="timeline-event-top">
+                    <span class="timeline-date">November 4 · Afternoon Shift</span>
+                    <span class="status status-progress">Action Recorded</span>
+                </div>
+
+                <h3>Initial inspection completed</h3>
+
+                <p>
+                    The afternoon team recorded that an inspection
+                    had been performed. Further review was still required.
+                </p>
+
+                <div class="timeline-details">
+                    <span>Machine A</span>
+                    <span>Reported by: Technician 02</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+
+            <div class="timeline-event">
+                <div class="timeline-event-top">
+                    <span class="timeline-date">November 5 · Morning Shift</span>
+                    <span class="status status-review">Follow-up</span>
+                </div>
+
+                <h3>Previous issue referenced</h3>
+
+                <p>
+                    The next team referred to the earlier Machine A
+                    report and requested an update on its status.
+                </p>
+
+                <div class="timeline-details">
+                    <span>Machine A</span>
+                    <span>Reported by: Shift Supervisor</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+
+            <div class="timeline-event">
+                <div class="timeline-event-top">
+                    <span class="timeline-date">November 5 · Afternoon Shift</span>
+                    <span class="status status-pending">Pending Review</span>
+                </div>
+
+                <h3>Issue remains under review</h3>
+
+                <p>
+                    The sample record indicates that the issue needs
+                    further review and a documented resolution.
+                </p>
+
+                <div class="timeline-details">
+                    <span>Machine A</span>
+                    <span>Reported by: Maintenance Team</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Memory explanation -->
+<div class="card memory-explanation">
+
+    <div class="memory-explanation-icon">✦</div>
+
+    <div>
+        <h2>Why Memory Matters</h2>
+
+        <p>
+            Without shared operational memory, every shift may begin
+            without knowing what happened before. OpsRelay aims to
+            connect previous reports, actions, and unresolved issues
+            so teams can continue from where the previous shift stopped.
+        </p>
+    </div>
+
+</div>
+
+<p class="sample-note">
+    Demo notice: Timeline events are illustrative sample records.
+    They are not actual memories retrieved from Hindsight.
+    Real memory retrieval will be connected through the backend.
+</p>
+
+{% endblock %}
