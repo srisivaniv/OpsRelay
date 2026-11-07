@@ -15,27 +15,27 @@
 <div class="stats-grid">
 
     <div class="card">
-        <p class="stat-label">Total Machines</p>
-        <div class="stat-number">12</div>
-        <p>Registered machines</p>
+        <p class="stat-label">Connected Memory</p>
+        <div class="stat-number">Active</div>
+        <p>Hindsight Cloud connected</p>
     </div>
 
     <div class="card">
-        <p class="stat-label">Active Issues</p>
+        <p class="stat-label">Memory Features</p>
         <div class="stat-number">03</div>
-        <span class="status status-critical">Needs attention</span>
+        <p>Retain · Recall · Reflect</p>
     </div>
 
     <div class="card">
-        <p class="stat-label">Pending Tasks</p>
-        <div class="stat-number">05</div>
-        <span class="status status-pending">In progress</span>
+        <p class="stat-label">Machines with Memories</p>
+        <div class="stat-number" id="dashboardMachineCount">--</div>
+        <p>Unique machines found in Hindsight</p>
     </div>
 
     <div class="card">
-        <p class="stat-label">Shift Reports</p>
-        <div class="stat-number">28</div>
-        <p>Reports recorded</p>
+        <p class="stat-label">Pattern Analysis</p>
+        <div class="stat-number">Active</div>
+        <p>Hindsight-powered analysis</p>
     </div>
 
 </div>
@@ -78,13 +78,17 @@
 
 </div>
 
-<!-- Recent Activity -->
+<!-- Dynamic Recent Activity -->
 <div class="page-heading">
     <h2>Recent Shift Activity</h2>
-    <p>A preview of recent operational updates.</p>
+    <p>Machine follow-up information retrieved from Hindsight.</p>
 </div>
 
 <div class="card table-container">
+
+    <p id="dashboardActivityMessage">
+        Loading machine records from Hindsight...
+    </p>
 
     <table>
         <thead>
@@ -96,26 +100,9 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody id="dashboardActivity">
             <tr>
-                <td>Machine A</td>
-                <td>Overheating</td>
-                <td>Morning Shift</td>
-                <td><span class="status status-pending">Unresolved</span></td>
-            </tr>
-
-            <tr>
-                <td>Machine B</td>
-                <td>Low pressure</td>
-                <td>Evening Shift</td>
-                <td><span class="status status-completed">Resolved</span></td>
-            </tr>
-
-            <tr>
-                <td>Machine C</td>
-                <td>Sensor warning</td>
-                <td>Morning Shift</td>
-                <td><span class="status status-pending">Monitoring</span></td>
+                <td colspan="4">Loading records...</td>
             </tr>
         </tbody>
     </table>

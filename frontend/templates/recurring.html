@@ -7,172 +7,43 @@
 
 <div class="page-heading">
     <h1>Recurring Issues</h1>
-    <p>Identify repeated machine problems and understand their history.</p>
+    <p>Identify machine problems and understand patterns using Hindsight memory.</p>
 </div>
 
-<!-- Summary Cards -->
-<div class="stats-grid">
+<div class="card">
+    <h3>Analyze Machine Patterns</h3>
 
-    <div class="card">
-        <p class="stat-label">Repeated Issues</p>
-        <div class="stat-number">03</div>
-        <p>Sample identified patterns</p>
+    <div class="search-row">
+        <input
+            type="text"
+            id="patternMachine"
+            placeholder="Enter machine name (e.g. MachineA)"
+        >
+
+        <button class="btn" type="button" onclick="findIssuePatterns()">
+            Analyze with Hindsight
+        </button>
     </div>
 
-    <div class="card">
-        <p class="stat-label">Most Reported Machine</p>
-        <div class="stat-number">A</div>
-        <p>Machine A</p>
-    </div>
-
-    <div class="card">
-        <p class="stat-label">Issues Under Monitoring</p>
-        <div class="stat-number">02</div>
-        <p>Require follow-up</p>
-    </div>
-
-    <div class="card">
-        <p class="stat-label">Resolved Patterns</p>
-        <div class="stat-number">01</div>
-        <p>Sample resolved record</p>
-    </div>
-
+    <p id="patternMessage" style="padding-top: 12px;"></p>
 </div>
 
-<!-- Recurring Issue List -->
-<div class="page-heading">
-    <h2>Detected Issue Patterns</h2>
-    <p>Examples of repeated problems from previous shift reports.</p>
+<div class="page-heading" style="margin-top: 28px;">
+    <h2>Hindsight Pattern Analysis</h2>
+    <p>Results are generated from memories stored in your connected Hindsight bank.</p>
 </div>
 
-<div class="recurring-list">
-
-    <div class="card recurring-card">
-
-        <div class="recurring-top">
-            <div>
-                <span class="status status-critical">High Priority</span>
-                <h3>Machine A – Overheating</h3>
-            </div>
-            <span class="issue-count">4 Reports</span>
-        </div>
-
-        <p class="recurring-description">
-            Overheating has been reported across multiple shifts.
-            Previous reports mention cooling system checks and fan inspection.
-        </p>
-
-        <div class="recurring-details">
-            <div>
-                <small>Machine</small>
-                <strong>Machine A</strong>
-            </div>
-
-            <div>
-                <small>Occurrences</small>
-                <strong>4 times</strong>
-            </div>
-
-            <div>
-                <small>Status</small>
-                <strong>Monitoring</strong>
-            </div>
-        </div>
-
-        <div class="recommendation">
-            <strong>Suggested follow-up</strong>
-            <p>
-                Review previous maintenance reports and arrange an
-                appropriate inspection by qualified maintenance staff.
-            </p>
-        </div>
-
+<div class="card recurring-card">
+    <div class="recurring-top">
+        <h3 id="patternTitle">No analysis yet</h3>
+        <span class="status status-pending" id="patternStatus">
+            Waiting
+        </span>
     </div>
 
-    <div class="card recurring-card">
-
-        <div class="recurring-top">
-            <div>
-                <span class="status status-pending">Medium Priority</span>
-                <h3>Machine C – Sensor Warning</h3>
-            </div>
-            <span class="issue-count">3 Reports</span>
-        </div>
-
-        <p class="recurring-description">
-            Sensor warnings have appeared in multiple recorded reports.
-            Earlier employees checked sensor connections.
-        </p>
-
-        <div class="recurring-details">
-            <div>
-                <small>Machine</small>
-                <strong>Machine C</strong>
-            </div>
-
-            <div>
-                <small>Occurrences</small>
-                <strong>3 times</strong>
-            </div>
-
-            <div>
-                <small>Status</small>
-                <strong>Pending review</strong>
-            </div>
-        </div>
-
-        <div class="recommendation">
-            <strong>Suggested follow-up</strong>
-            <p>
-                Review the previous sensor reports and request a
-                qualified technical inspection if needed.
-            </p>
-        </div>
-
+    <div id="patternResult">
+        <p>Enter a machine name and select Analyze with Hindsight to retrieve its recorded patterns.</p>
     </div>
-
-    <div class="card recurring-card">
-
-        <div class="recurring-top">
-            <div>
-                <span class="status status-pending">Medium Priority</span>
-                <h3>Machine B – Low Pressure</h3>
-            </div>
-            <span class="issue-count">2 Reports</span>
-        </div>
-
-        <p class="recurring-description">
-            Low pressure was recorded in two sample reports.
-            A pressure valve inspection was previously recorded.
-        </p>
-
-        <div class="recurring-details">
-            <div>
-                <small>Machine</small>
-                <strong>Machine B</strong>
-            </div>
-
-            <div>
-                <small>Occurrences</small>
-                <strong>2 times</strong>
-            </div>
-
-            <div>
-                <small>Status</small>
-                <strong>Resolved</strong>
-            </div>
-        </div>
-
-        <div class="recommendation">
-            <strong>Previous action</strong>
-            <p>
-                Pressure valve inspection was recorded as the
-                previous action. Check later reports for confirmation.
-            </p>
-        </div>
-
-    </div>
-
 </div>
 
 {% endblock %}

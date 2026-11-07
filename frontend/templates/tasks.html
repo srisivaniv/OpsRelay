@@ -6,43 +6,16 @@
 {% block content %}
 
 <div class="page-heading">
-    <div>
-        <h1>Pending Tasks</h1>
-        <p>Track unfinished work from previous shifts.</p>
-    </div>
-    <span class="status status-pending">Tasks to Review</span>
+    <h1>Pending Tasks</h1>
+    <p>Review unresolved and monitored issues retrieved from Hindsight.</p>
 </div>
 
-<!-- Task summary -->
-<div class="stats-grid task-stats">
-    <div class="card">
-        <p class="stat-label">Total Tasks</p>
-        <h2 class="stat-number">6</h2>
-    </div>
-
-    <div class="card">
-        <p class="stat-label">High Priority</p>
-        <h2 class="stat-number">2</h2>
-    </div>
-
-    <div class="card">
-        <p class="stat-label">In Progress</p>
-        <h2 class="stat-number">2</h2>
-    </div>
-
-    <div class="card">
-        <p class="stat-label">Awaiting Review</p>
-        <h2 class="stat-number">2</h2>
-    </div>
-</div>
-
-<!-- Task list -->
 <div class="card task-section">
 
     <div class="task-section-heading">
         <div>
-            <h2>Task Overview</h2>
-            <p>Example handover tasks for demonstration.</p>
+            <h2>Hindsight Follow-up Records</h2>
+            <p>Actual memories from submitted shift reports.</p>
         </div>
     </div>
 
@@ -50,91 +23,39 @@
         <input
             type="text"
             id="taskSearch"
-            placeholder="Search by task or machine..."
+            placeholder="Search MachineA, MachineB or an issue..."
             oninput="filterTasks()"
         >
-
-        <select id="taskStatus" onchange="filterTasks()">
-            <option value="all">All Statuses</option>
-            <option value="pending">Pending</option>
-            <option value="in progress">In Progress</option>
-            <option value="review">Awaiting Review</option>
-        </select>
     </div>
+
+    <p id="taskMessage">Loading memories from Hindsight...</p>
 
     <div class="table-container">
         <table class="task-table" id="taskTable">
             <thead>
                 <tr>
-                    <th>Task</th>
-                    <th>Machine</th>
-                    <th>Assigned To</th>
-                    <th>Priority</th>
-                    <th>Status</th>
+                    <th>Retrieved Follow-up Memory</th>
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="taskResults">
                 <tr>
-                    <td>Inspect cooling system</td>
-                    <td>Machine A</td>
-                    <td>Maintenance Team</td>
-                    <td><span class="priority high">High</span></td>
-                    <td><span class="status status-pending">Pending</span></td>
-                </tr>
-
-                <tr>
-                    <td>Check sensor readings</td>
-                    <td>Machine C</td>
-                    <td>Technician 02</td>
-                    <td><span class="priority medium">Medium</span></td>
-                    <td><span class="status status-progress">In Progress</span></td>
-                </tr>
-
-                <tr>
-                    <td>Review pressure warning</td>
-                    <td>Machine B</td>
-                    <td>Maintenance Team</td>
-                    <td><span class="priority high">High</span></td>
-                    <td><span class="status status-pending">Pending</span></td>
-                </tr>
-
-                <tr>
-                    <td>Verify previous repair report</td>
-                    <td>Machine A</td>
-                    <td>Shift Supervisor</td>
-                    <td><span class="priority low">Low</span></td>
-                    <td><span class="status status-review">Awaiting Review</span></td>
-                </tr>
-
-                <tr>
-                    <td>Inspect equipment records</td>
-                    <td>Machine D</td>
-                    <td>Technician 01</td>
-                    <td><span class="priority medium">Medium</span></td>
-                    <td><span class="status status-progress">In Progress</span></td>
-                </tr>
-
-                <tr>
-                    <td>Confirm maintenance completion</td>
-                    <td>Machine C</td>
-                    <td>Shift Supervisor</td>
-                    <td><span class="priority low">Low</span></td>
-                    <td><span class="status status-review">Awaiting Review</span></td>
+                    <td>Loading records...</td>
                 </tr>
             </tbody>
         </table>
 
         <p id="noTaskResults" class="empty-message" style="display:none;">
-            No matching tasks found.
+            No matching records found.
         </p>
     </div>
 
 </div>
 
 <p class="sample-note">
-    Note: These are sample tasks for the frontend demonstration.
-    Actual tasks will be retrieved from the backend and Hindsight integration.
+    These records are retrieved from Hindsight memory.
+    Multiple memories may describe the same incident.
+    They are not separate assigned tasks.
 </p>
 
 {% endblock %}
